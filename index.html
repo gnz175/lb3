@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <table style="margin: 0 auto;">
+        <tr style="text-align: center;">
+        <td colspan="3"><img src="img1.png" width=440 name="slide_show"></td>
+        </tr>
+        <tr>
+         <td style="text-align: right;"><a href="javascript:chgImg(-1)">Предыдущая</a></td>
+         <td style="text-align: center;"><a href="javascript:auto()">Старт/Стоп</a></td>
+         <td style="text-align: left;"><a href="javascript:chgImg(1)">Следующая</a></td>
+        </tr>
+       </table>
+
+    <input type="text" value="" id="getTime" >
+    <input type="button" value="Button" id="buttonId">
+
+    <script type="text/javascript">
+        var cheched = true;
+        theTime = new Date();
+        theHour = theTime.getHours();
+        theMinute = theTime.getMinutes();
+        if(theMinute>=3&&theMinute<=6&&cheched){
+        document.body.style.cssText = "background: url('back1.jpg') top center repeat-x";
+        }
+        else if(theMinute>6&&theMinute<=9&&cheched){
+        document.body.style.cssText = "background: url('back2.jpg') top center repeat-x";
+        }
+        else if(theMinute>9&&theMinute<=12&&cheched){
+        document.body.style.cssText = "background:  url('back3.jpg') top center repeat-x";
+        }
+        else if(theMinute>12&&theMinute<=15&&cheched){
+        document.body.style.cssText = "background: url('back4.jpg') top center repeat-x";
+        }
+        else if(theMinute>15&&theMinute<=18&&cheched){
+        document.body.style.cssText = "background: url('back5.jpg') top center repeat-x";
+        }
+        else if(theMinute>18&&theMinute<=21&&cheched){
+        document.body.style.cssText = "background:  url('back6.jpg') top center repeat-x";
+        }
+        else if(theMinute>21&&theMinute<=24&&cheched){
+        document.body.style.cssText = "background:  url('back7.jpg') top center repeat-x";
+        }
+        else if(theMinute>24&&theMinute<=27&&cheched){
+        document.body.style.cssText = "background: url('back8.jpg') top center repeat-x";
+        }
+        else if(theMinute>27&&theMinute<=30&&cheched){
+        document.body.style.cssText = "background: url('back9.jpg') top center repeat-x";
+        }
+        else if(theMinute>30&&theMinute<=33&&cheched){
+        document.body.style.cssText = "background: url('back10.jpg') top center repeat-x";
+        }
+        else if(theMinute>33&&theMinute<=36&&cheched){
+        document.body.style.cssText = "background: url('back11.jpg') top center repeat-x";
+        }
+        else if(theMinute>36&&theMinute<=39&&cheched){
+        document.body.style.cssText = "background: url('back13.jpg') top center repeat-x";
+        }
+        else if(theMinute>42&&theMinute<=45&&cheched){
+        document.body.style.cssText = "background: url('back14.jpg') top center repeat-x";
+        }
+        else if(theMinute>45&&theMinute<=48&&cheched){
+        document.body.style.cssText = "background: url('back15.jpg') top center repeat-x";
+        }
+        else if(theMinute>48&&theMinute<=51&&cheched){
+        document.body.style.cssText = "background: url('back16.jpg') top center repeat-x";
+        }
+        else if(theMinute>51&&theMinute<=54&&cheched){
+        document.body.style.cssText = "background: url('back17.jpg') top center repeat-x";
+        }
+        else if(theMinute>54&&theMinute<=57&&cheched){
+        document.body.style.cssText = "background: url('back18.jpg') top center repeat-x";
+        }
+        else if(theMinute>57&&theMinute<=60&&cheched){
+        document.body.style.cssText = "background: url('back19.jpg') top center repeat-x";
+        }
+        else if(theMinute>0&&theMinute<=3&&cheched){
+        document.body.style.cssText = "background: url('back20.jpg') top center repeat-x";
+        }
+        else{
+        document.body.style.cssText = "back21.jpg";
+        }
+
+all_images = new Array (
+"img1.png",
+"img2.png",
+"img3.png",
+"img4.png");
+var ImgNum = 0;
+var ImgLength = all_images.length - 1;
+var delay = 2500;
+var lock = false;
+var run;
+
+function chgImg(direction) {
+ if (document.images) {
+  ImgNum = ImgNum + direction;
+  if (ImgNum > ImgLength) { ImgNum = 0; }
+  if (ImgNum < 0) { ImgNum = ImgLength; }
+  document.slide_show.src = all_images[ImgNum];
+ }
+}
+
+function auto() {
+ if (lock == true) {
+  lock = false;
+  window.clearInterval(run);
+ }
+ else if (lock == false) {
+  lock = true;
+  run = setInterval("chgImg(1)", delay);
+ }
+}
+
+all_backs = new Array(
+    "back1.jpg",
+    "back2.jpg",
+    "back3.jpg",
+    "back4.jpg",
+    "back5.jpg",
+    "back6.jpg",
+);
+
+var counter = 0;
+let input = document.getElementById('getTime');
+document.querySelector('#buttonId').addEventListener('click', function() {
+    setInterval(() => {
+        document.body.style.cssText = `background: url(${all_backs[counter]}) top center repeat-x`;
+        if( counter < all_backs.length - 1 ) {
+            counter ++;
+        }
+        else {
+            counter = 0;
+        }
+    }, input.value * 1000);
+    checked = false;
+    console.log(counter);
+});
+
+
+    </script>
+       <script type="text/javascript">
+        auto();
+       </script>
+</body>
+</html>
